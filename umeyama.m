@@ -16,6 +16,7 @@ function [ R, t ] = umeyama( X, Y, plotResult )
 %   Johns Hopkins University (Baltimore, MD, USA)
 
 assert(size(X,1)==size(Y,1) && size(X,2)==size(Y,2),'Dimensions of matrices must match!');
+assert(size(X,1)==3, 'The points must be given in format [3xn]');
 
 %% Demean
 m = size(X,1);
