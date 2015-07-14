@@ -12,7 +12,7 @@ function [ R, t ] = umeyama( X, Y, plotResult )
 %
 % Author: Christoph Graumann, 2015
 %   Chair for Computer Aided Medical Procedures and Augmented Reality
-%   Technische Universität München (Munich, Germany) and 
+%   Technische Universitaet Muenchen (Munich, Germany) and 
 %   Johns Hopkins University (Baltimore, MD, USA)
 
 assert(size(X,1)==size(Y,1) && size(X,2)==size(Y,2),'Dimensions of matrices must match!');
@@ -45,12 +45,12 @@ if nargin>2 && plotResult
     figure('name','Result of Umeyama registration');
     scatter3(X(1,:),X(2,:),X(3,:),'g*');
     hold on;
-    scatter3(Y(1,:),Y(2,:),Y(3,:),'b*');
-    Y_prime = [R t; 0 0 0 1] * [Y;ones(1,size(Y,2))];
-    scatter3(Y_prime(1,:),Y_prime(2,:),Y_prime(3,:),'r*');
+    scatter3(Y(1,:),Y(2,:),Y(3,:),'bo');
+    X_prime = [R t; 0 0 0 1] * [X;ones(1,size(X,2))];
+    scatter3(X_prime(1,:),X_prime(2,:),X_prime(3,:),'r*');
     axis equal tight;
-    legend('Destination points','Source points','Transformation result');
-    MEAN_REGISTRATION_ERROR = norm(mean(X - Y_prime(1:3,:),2))
+    legend('Source points','Destination points','Transformation result');
+    MEAN_REGISTRATION_ERROR = norm(mean(Y - X_prime(1:3,:),2))
 end
 
 end
