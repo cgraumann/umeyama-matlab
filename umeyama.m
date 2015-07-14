@@ -2,7 +2,7 @@ function [ R, t ] = umeyama( X, Y, plotResult )
 %UMEYAMA Corresponding point set registration with Umeyama method.
 %
 % [R, t] = umeyama(X, Y)   returns the rotation matrix R and translation
-% vector t that approximate X = R * Y + t using least-squares estimation. X
+% vector t that approximate Y = R * X + t using least-squares estimation. X
 % and Y are in format [3xn] and point X(:,i) corresponds to point Y(:,i)
 % for all i.
 %
@@ -26,7 +26,7 @@ X_demean = X - repmat(mean_X,1,size(X,2));
 Y_demean = Y - repmat(mean_Y,1,size(Y,2));
 
 %% SVD
-sigma = 1/n*X_demean*Y_demean';
+sigma = 1/n*Y_demean*X_demean';
 [U,~,V] = svd(sigma);
 
 %% Define S
