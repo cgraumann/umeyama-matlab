@@ -50,7 +50,7 @@ if nargin>2 && plotResult
     scatter3(X_prime(1,:),X_prime(2,:),X_prime(3,:),'r*');
     axis equal tight;
     legend('Source points','Destination points','Transformation result');
-    MEAN_REGISTRATION_ERROR = norm(mean(Y - X_prime(1:3,:),2))
+    MEAN_REGISTRATION_ERROR = norm(mean(abs(Y - X_prime(1:3,:)),2))
 end
 
 end
